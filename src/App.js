@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "./components/headers";
 import { LogForm } from "./components/form";
-import { fetchImages } from "./utils";
+import { fetchImages, login } from "./utils";
 import "./App.css";
 
 const App = () => {
@@ -10,6 +10,9 @@ const App = () => {
 
   useEffect(() => {
     fetchImages(setImages);
+    if (localStorage.key("myToken")) {
+      login(setUser);
+    }
   }, []);
 
   return (
